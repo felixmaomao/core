@@ -1,17 +1,17 @@
-package core.log;
+package com.felix.core.log;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
- * @author
+ * @author 沈伟
  * @date 2016-09-29
  * 异常堆栈信息转化字符串信息
  */
 public class LogExceptionStackTrace {
 
-    public static Object erroStackTrace(Object obj) {
+    public static Object errorStackTrace(Object obj) {
         if (obj instanceof Exception) {
             Exception eObj = (Exception) obj;
             StringWriter sw = null;

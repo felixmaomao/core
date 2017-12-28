@@ -1,4 +1,4 @@
-package core.utils;
+package com.felix.core.utils;
 
 import com.alibaba.fastjson.JSON;
 

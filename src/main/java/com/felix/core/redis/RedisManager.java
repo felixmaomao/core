@@ -1,16 +1,21 @@
-package core.redis;
+package com.felix.core.redis;
 
 import com.alibaba.fastjson.JSON;
-import core.log.LogExceptionStackTrace;
+import com.felix.core.log.LogExceptionStackTrace;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.*;
-import core.utils.GfJsonUtil;
+import com.felix.core.utils.GfJsonUtil;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @Author shenwei
+ * @Date 2017/12/26 10:22
+ * @Description redis 单实例
+ */
 public class RedisManager {
     private static final Logger logger = LoggerFactory.getLogger(RedisManager.class);
     private int maxActive = 8;
