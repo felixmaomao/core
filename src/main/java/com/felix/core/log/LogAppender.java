@@ -1,7 +1,7 @@
 package com.felix.core.log;
 
 
-import com.felix.core.utils.GfJsonUtil;
+import com.felix.core.utils.JsonUtil;
 import com.felix.core.utils.IpGetter;
 import com.felix.core.utils.RedisManagerUtil;
 import org.apache.log4j.AppenderSkeleton;
@@ -113,7 +113,7 @@ public class LogAppender extends AppenderSkeleton {
                         break;
                 }
                 RedisManagerUtil util = RedisManagerUtil.getInstance(host, port, auth);
-                util.rpushNoLog(key, GfJsonUtil.toJSONString(lc));
+                util.rpushNoLog(key, JsonUtil.toJSONString(lc));
             }
         });
     }

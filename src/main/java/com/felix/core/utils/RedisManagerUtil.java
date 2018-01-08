@@ -123,7 +123,7 @@ public  class RedisManagerUtil {
 		Jedis sj = null;
 		try {
 			sj = jedisPool.getResource();
-			String objectValue = GfJsonUtil.toJSONString(value);
+			String objectValue = JsonUtil.toJSONString(value);
 			String v = sj.set(key, objectValue);
 			return v;
 		} catch (Exception e) {

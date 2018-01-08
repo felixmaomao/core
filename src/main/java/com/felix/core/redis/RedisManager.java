@@ -5,7 +5,7 @@ import com.felix.core.log.LogExceptionStackTrace;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.*;
-import com.felix.core.utils.GfJsonUtil;
+import com.felix.core.utils.JsonUtil;
 
 import java.util.List;
 import java.util.Map;
@@ -106,7 +106,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：incr key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：incr key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -128,7 +128,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：incr key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：incr key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -149,7 +149,7 @@ public class RedisManager {
             sj = jedisPool.getResource();
             return sj.keys(pattern);
         } catch (Exception e) {
-            logger.error("command：keys key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：keys key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -172,7 +172,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：hkeys key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：hkeys key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -194,7 +194,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：hvals key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：hvals key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -216,7 +216,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：get key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：get key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -237,7 +237,7 @@ public class RedisManager {
                 logger.warn("ip={}, host={}, command=getrange, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=getrange, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=getrange, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -257,7 +257,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：sadd key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：sadd key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -279,7 +279,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：scard key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：scard key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -300,7 +300,7 @@ public class RedisManager {
             }
             return set;
         } catch (Exception e) {
-            logger.error(" command= sdiff, keys={}, error={}", keys, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error(" command= sdiff, keys={}, error={}", keys, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -319,7 +319,7 @@ public class RedisManager {
             }
             return num;
         } catch (Exception e) {
-            logger.error("command=sdiffstore, dstkey={}, error={}", dstkey, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=sdiffstore, dstkey={}, error={}", dstkey, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -337,7 +337,7 @@ public class RedisManager {
                 logger.warn("ip={}, port={}, command=sinter, execute_time={}", host, port, time);
             return set;
         } catch (Exception e) {
-            logger.error("command=sinter, keys={}, error={}", JSON.toJSONString(keys), LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=sinter, keys={}, error={}", JSON.toJSONString(keys), LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -355,7 +355,7 @@ public class RedisManager {
                 logger.warn("ip={}, port={}, command=sinterstore, execut_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=sinterstore, dstkey={}, error={}", dstkey, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=sinterstore, dstkey={}, error={}", dstkey, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -375,7 +375,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：sadd key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：sadd key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -397,7 +397,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：set key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：set key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -418,7 +418,7 @@ public class RedisManager {
                 logger.warn("ip={}, port={}, command=setex, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=setex, key={}, seconds={}, value={}, error={}", key, seconds, value, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=setex, key={}, seconds={}, value={}, error={}", key, seconds, value, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -436,7 +436,7 @@ public class RedisManager {
                 logger.warn("ip={}, port={}, command=setnx, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=setnx, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=setnx, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -454,7 +454,7 @@ public class RedisManager {
                 logger.warn("ip={}, host={}, command=setrange, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=setrange, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=setrange, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -472,7 +472,7 @@ public class RedisManager {
                 logger.warn("ip={}, host={}, command=strlen, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=strlen, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=strlen, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -492,10 +492,10 @@ public class RedisManager {
             Long end = System.currentTimeMillis();
             Long time = end - start;
             if (time > 500) {
-                logger.warn("ip:{} port:{} command：set list key:{} execution time:{}ms", this.host, this.port, GfJsonUtil.toJSONString(keys), time);
+                logger.warn("ip:{} port:{} command：set list key:{} execution time:{}ms", this.host, this.port, JsonUtil.toJSONString(keys), time);
             }
         } catch (Exception e) {
-            logger.error("command：set key:{} ex={}", GfJsonUtil.toJSONString(keys), LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：set key:{} ex={}", JsonUtil.toJSONString(keys), LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -515,7 +515,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：mset key:{} execution time:{}ms", this.host, this.port, keysvalues, time);
             }
         } catch (Exception e) {
-            logger.error("command：mset key:{} ex={}", GfJsonUtil.toJSONString(keysvalues), LogExceptionStackTrace.erroStackTrace(e), LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：mset key:{} ex={}", JsonUtil.toJSONString(keysvalues), LogExceptionStackTrace.errorStackTrace(e), LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -528,7 +528,7 @@ public class RedisManager {
         Jedis sj = null;
         try {
             sj = jedisPool.getResource();
-            String objectValue = GfJsonUtil.toJSONString(value);
+            String objectValue = JsonUtil.toJSONString(value);
             String v = sj.set(key, objectValue);
             Long end = System.currentTimeMillis();
             Long time = end - start;
@@ -537,7 +537,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：setObject key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：setObject key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -563,7 +563,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：set key:{} execution time:{}ms", this.host, this.port, key, time);
             }
         } catch (Exception e) {
-            logger.error("command：Pipeline set key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：Pipeline set key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -584,7 +584,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：getSet key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：getSet key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -606,7 +606,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：sadd key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：sadd key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -628,7 +628,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：srem key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：srem key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -648,7 +648,7 @@ public class RedisManager {
                 logger.warn("ip={}, port={}, command=sunion, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=sunion, keys={}, error={}", JSON.toJSONString(keys), LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=sunion, keys={}, error={}", JSON.toJSONString(keys), LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -666,7 +666,7 @@ public class RedisManager {
                 logger.warn("ip={}, host={}, command=incrby, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=incrby, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=incrby, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -684,7 +684,7 @@ public class RedisManager {
                 logger.warn("ip={}, host={}, command=incrbyfloat, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=incrbyfloat, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=incrbyfloat, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -702,7 +702,7 @@ public class RedisManager {
                 logger.warn("ip={}, port={}, command=sunionstore, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=sunionstore, dstkey={}, error={}", dstkey, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=sunionstore, dstkey={}, error={}", dstkey, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -722,7 +722,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：zadd key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：zadd key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -747,7 +747,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：Pipeline zadd key:{} execution time:{}ms", this.host, this.port, key, time);
             }
         } catch (Exception e) {
-            logger.error("command：Pipeline zadd key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：Pipeline zadd key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -771,7 +771,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：Pipeline sadd key:{} execution time:{}ms", this.host, this.port, key, time);
             }
         } catch (Exception e) {
-            logger.error("command：Pipeline sadd key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：Pipeline sadd key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -792,7 +792,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：hget key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：hget key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -814,7 +814,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：hmset key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：hmset key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -839,7 +839,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：Pipeline hmset key:{} execution time:{}ms", this.host, this.port, key, time);
             }
         } catch (Exception e) {
-            logger.error("command：Pipeline hmset key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：Pipeline hmset key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -860,7 +860,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：hmget key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：hmget key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -882,7 +882,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：del key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：del key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -904,7 +904,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：decr key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：decr key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -926,7 +926,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：decrBy key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：decrBy key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -948,7 +948,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：append key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：append key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -970,7 +970,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：bitcount key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：bitcount key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -992,7 +992,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：bitpos key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：bitpos key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1014,7 +1014,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：expire key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：expire key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1036,7 +1036,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：expireAt key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：expireAt key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1058,7 +1058,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：hdel key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：hdel key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1078,7 +1078,7 @@ public class RedisManager {
                 logger.warn("ip={}, host={}, command=hexists, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=hexists, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=hexists, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1098,7 +1098,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：hincrBy key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：hincrBy key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1118,7 +1118,7 @@ public class RedisManager {
                 logger.warn("ip={}, host={}, command=hincrbyfloat, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=hincrbyfloat, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=hincrbyfloat, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1138,7 +1138,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：hlen key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：hlen key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1160,7 +1160,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：hset key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：hset key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1185,7 +1185,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：Pipeline hset key:{} execution time:{}ms", this.host, this.port, key, time);
             }
         } catch (Exception e) {
-            logger.error("command：Pipeline hset key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：Pipeline hset key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1206,7 +1206,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：hsetnx key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：hsetnx key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1231,7 +1231,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：Pipeline hsetnx key:{} execution time:{}ms", this.host, this.port, key, time);
             }
         } catch (Exception e) {
-            logger.error("command：Pipeline hsetnx key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：Pipeline hsetnx key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1252,7 +1252,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：llen key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：llen key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1274,7 +1274,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：lpush key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：lpush key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1294,7 +1294,7 @@ public class RedisManager {
                 logger.warn("ip={}, host={}, command=lpushx, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=lpushx, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=lpushx, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1317,7 +1317,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：Pipeline lpush key:{} execution time:{}ms", this.host, this.port, key, time);
             }
         } catch (Exception e) {
-            logger.error("command：Pipeline lpush key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：Pipeline lpush key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1338,7 +1338,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：lpushx key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：lpushx key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1363,7 +1363,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：Pipeline lpushx key:{} execution time:{}ms", this.host, this.port, key, time);
             }
         } catch (Exception e) {
-            logger.error("command：Pipeline lpushx key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：Pipeline lpushx key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1384,7 +1384,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：lindex key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：lindex key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1406,7 +1406,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：lpop key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：lpop key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1428,7 +1428,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：lpop key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：lpop key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1450,7 +1450,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：lrem key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：lrem key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1470,7 +1470,7 @@ public class RedisManager {
                 logger.warn("ip={}, host={}, command=lset, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=lset, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=lset, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1488,7 +1488,7 @@ public class RedisManager {
                 logger.warn("ip={}, host={}, command=ltrim, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=ltrim, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=ltrim, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1508,7 +1508,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：move key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：move key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1530,7 +1530,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：persist key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：persist key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1552,7 +1552,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：persist key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：persist key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1574,7 +1574,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：pexpireAt key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：pexpireAt key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1596,7 +1596,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：pfadd key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：pfadd key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1618,7 +1618,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：pttl key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：pttl key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
             return null;
         } finally {
             if (sj != null) {
@@ -1640,7 +1640,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：pfcount key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：pfcount key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1662,7 +1662,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：rpush key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：rpush key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1687,7 +1687,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：Pipeline rpush key:{} execution time:{}ms", this.host, this.port, key, time);
             }
         } catch (Exception e) {
-            logger.error("command：Pipeline rpush key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：Pipeline rpush key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1711,7 +1711,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：Pipeline rpushx key:{} execution time:{}ms", this.host, this.port, key, time);
             }
         } catch (Exception e) {
-            logger.error("command：Pipeline rpushx key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：Pipeline rpushx key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1732,7 +1732,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：rpushx key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：rpushx key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1754,7 +1754,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：rpop key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：rpop key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1776,7 +1776,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：zscore key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：zscore key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1797,7 +1797,7 @@ public class RedisManager {
             }
             return len;
         } catch (Exception e) {
-            logger.error(" command: zcard, key: {}, ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error(" command: zcard, key: {}, ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1816,7 +1816,7 @@ public class RedisManager {
             }
             return val;
         } catch (Exception e) {
-            logger.error("command= zcount, key={}, min={}, max={}, error={}", key, min, max, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command= zcount, key={}, min={}, max={}, error={}", key, min, max, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1835,7 +1835,7 @@ public class RedisManager {
             }
             return newScore;
         } catch (Exception e) {
-            logger.error("command= zincrby, key={}, score={}, member={}, error={}", key, score, member, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command= zincrby, key={}, score={}, member={}, error={}", key, score, member, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1854,7 +1854,7 @@ public class RedisManager {
             }
             return ret;
         } catch (Exception e) {
-            logger.error("command=zinterstore, dstkey={}, error={}", dstkey, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=zinterstore, dstkey={}, error={}", dstkey, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1873,7 +1873,7 @@ public class RedisManager {
             }
             return ret;
         } catch (Exception e) {
-            logger.error(" command= zlexcount, key={}, min={}, max={}, error={}", key, min, max, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error(" command= zlexcount, key={}, min={}, max={}, error={}", key, min, max, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1892,7 +1892,7 @@ public class RedisManager {
             }
             return rank;
         } catch (Exception e) {
-            logger.error("command=zrank, key={}, member={}, error={}", key, member, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=zrank, key={}, member={}, error={}", key, member, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1912,7 +1912,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：smembers key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：smembers key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1932,7 +1932,7 @@ public class RedisManager {
                 logger.warn("ip={}, port={}, command=smove, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=smove, srckey={}, dstkey={}, member={}, error={}", srckey, dstkey, member, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=smove, srckey={}, dstkey={}, member={}, error={}", srckey, dstkey, member, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -1952,7 +1952,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：sismember key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：sismember key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1974,7 +1974,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：exists key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：exists key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -1996,7 +1996,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：echo key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：echo key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2018,7 +2018,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：zrange key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：zrange key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2038,7 +2038,7 @@ public class RedisManager {
                 logger.warn("ip={}, port={}, command=zunionstore, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=zunionstore, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=zunionstore, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -2057,7 +2057,7 @@ public class RedisManager {
             }
             return set;
         } catch (Exception e) {
-            logger.error("command=zrangebylex, key={}, min={}, max={}, error={}", key, min, max, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=zrangebylex, key={}, min={}, max={}, error={}", key, min, max, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -2076,7 +2076,7 @@ public class RedisManager {
             }
             return set;
         } catch (Exception e) {
-            logger.error("command= zrangebyscore, key={}, min={}, max={}, error={}", key, min, max, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command= zrangebyscore, key={}, min={}, max={}, error={}", key, min, max, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -2096,7 +2096,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：zrem key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：zrem key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2117,7 +2117,7 @@ public class RedisManager {
             }
             return ret;
         } catch (Exception e) {
-            logger.error("command= zremrangebylex, key={}, min={}, max={}, error={}", key, min, max, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command= zremrangebylex, key={}, min={}, max={}, error={}", key, min, max, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -2136,7 +2136,7 @@ public class RedisManager {
             }
             return ret;
         } catch (Exception e) {
-            logger.error("command= zremrangebyrank, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command= zremrangebyrank, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -2155,7 +2155,7 @@ public class RedisManager {
             }
             return ret;
         } catch (Exception e) {
-            logger.error("command=zremrangebyscore, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=zremrangebyscore, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -2176,7 +2176,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：zrange key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：zrange key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2198,7 +2198,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：zrevrange key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：zrevrange key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2219,7 +2219,7 @@ public class RedisManager {
             }
             return set;
         } catch (Exception e) {
-            logger.error("command=zrevrangebylex, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=zrevrangebylex, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -2237,7 +2237,7 @@ public class RedisManager {
                 logger.warn("ip={}, port={}, command=zrevrangebyscore, execute_time={}ms", host, port, time);
             return set;
         } catch (Exception e) {
-            logger.error("command=zrevrangebyscore, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=zrevrangebyscore, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -2255,7 +2255,7 @@ public class RedisManager {
                 logger.warn("ip={}, port={}, command=zrevrank, execute_time={}ms", host, port, time);
             return ret;
         } catch (Exception e) {
-            logger.error("command=zrevrank, key={}, error={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command=zrevrank, key={}, error={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             returnResource(jedis);
         }
@@ -2275,7 +2275,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：zrevrange key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：zrevrange key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2297,7 +2297,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：hgetAll key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：hgetAll key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2319,7 +2319,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：brpop key:{} ex={}", arg, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：brpop key:{} ex={}", arg, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2341,7 +2341,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：sort key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：sort key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2363,7 +2363,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：srandmember key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：srandmember key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2385,7 +2385,7 @@ public class RedisManager {
             }
             return v;
         } catch (Exception e) {
-            logger.error("command：pttl key:{} ex={}", key, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：pttl key:{} ex={}", key, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2406,7 +2406,7 @@ public class RedisManager {
                 logger.warn("ip:{} port:{} command：subscribe key:{} execution time:{}ms", this.host, this.port, channels, time);
             }
         } catch (Exception e) {
-            logger.error("command：subscribe channels:{} ex={}", channels, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：subscribe channels:{} ex={}", channels, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);
@@ -2427,7 +2427,7 @@ public class RedisManager {
             }
             return re;
         } catch (Exception e) {
-            logger.error("command：publish channels:{} ex={}", channel, LogExceptionStackTrace.erroStackTrace(e));
+            logger.error("command：publish channels:{} ex={}", channel, LogExceptionStackTrace.errorStackTrace(e));
         } finally {
             if (sj != null) {
                 returnResource(sj);

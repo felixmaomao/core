@@ -4,9 +4,9 @@ import com.alibaba.fastjson.JSON;
 
 import java.util.*;
 
-public abstract class GfJsonUtil {
+public abstract class JsonUtil {
 
-    private GfJsonUtil() {
+    private JsonUtil() {
     }
 
     /**
